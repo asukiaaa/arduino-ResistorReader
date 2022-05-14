@@ -3,49 +3,49 @@
 #include <ResistorReader_asukiaaa.hpp>
 
 void test_calcResistorFromADC_downer() {
-  double resistorAlowwDiff = 1;
+  double resistorAlowwDiff = 0.01;
   float resistorUpper = 0;
-  float resistorDowner = 100;
+  float resistorDowner = 10;
   auto pinPosition = ResistorReader_asukiaaa::PinPosition::Downer;
   float rateAnalog;
   double resistorResult;
   double resistorExpected;
 
   rateAnalog = 0.5;
-  resistorExpected = 100;
+  resistorExpected = 10;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected,
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected,
                             resistorResult);
 
   rateAnalog = 0.5555;
-  resistorExpected = 80;
+  resistorExpected = 8;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.6666;
-  resistorExpected = 50;
+  resistorExpected = 5;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.8333;
-  resistorExpected = 20;
+  resistorExpected = 2;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 1;
   resistorExpected = 0;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 }
 
 void test_calcResistorFromADC_upper() {
-  double resistorAlowwDiff = 1;
-  float resistorUpper = 100;
+  double resistorAlowwDiff = 0.01;
+  float resistorUpper = 10;
   float resistorDowner = 0;
   auto pinPosition = ResistorReader_asukiaaa::PinPosition::Upper;
   float rateAnalog;
@@ -53,114 +53,114 @@ void test_calcResistorFromADC_upper() {
   double resistorExpected;
 
   rateAnalog = 0.5;
-  resistorExpected = 100;
+  resistorExpected = 10;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.4444;
-  resistorExpected = 80;
+  resistorExpected = 8;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.3333;
-  resistorExpected = 50;
+  resistorExpected = 5;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.1666;
-  resistorExpected = 20;
+  resistorExpected = 2;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0;
   resistorExpected = 0;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 }
 
 void test_calcResistorFromADC_pin_downer_resistor_both() {
-  double resistorAlowwDiff = 1;
-  float resistorUpper = 100;
-  float resistorDowner = 50;
+  double resistorAlowwDiff = 0.01;
+  float resistorUpper = 10;
+  float resistorDowner = 5;
   auto pinPosition = ResistorReader_asukiaaa::PinPosition::Downer;
   float rateAnalog;
   double resistorResult;
   double resistorExpected;
 
   rateAnalog = 0.2;
-  resistorExpected = 100;
+  resistorExpected = 10;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
-  rateAnalog = 0.217;
-  resistorExpected = 80;
+  rateAnalog = 0.2174;
+  resistorExpected = 8;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.25;
-  resistorExpected = 50;
+  resistorExpected = 5;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.294;
-  resistorExpected = 20;
+  resistorExpected = 2;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.3333;
   resistorExpected = 0;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 }
 
 void test_calcResistorFromADC_pin_upper_resistor_both() {
-  double resistorAlowwDiff = 1;
-  float resistorUpper = 100;
-  float resistorDowner = 50;
+  double resistorAlowwDiff = 0.01;
+  float resistorUpper = 10;
+  float resistorDowner = 5;
   auto pinPosition = ResistorReader_asukiaaa::PinPosition::Upper;
   float rateAnalog;
   double resistorResult;
   double resistorExpected;
 
   rateAnalog = 0.6;
-  resistorExpected = 100;
+  resistorExpected = 10;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.5652;
-  resistorExpected = 80;
+  resistorExpected = 8;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.5;
-  resistorExpected = 50;
+  resistorExpected = 5;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.4118;
-  resistorExpected = 20;
+  resistorExpected = 2;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 
   rateAnalog = 0.3333;
   resistorExpected = 0;
   resistorResult = ResistorReader_asukiaaa::calcResistorFromAnalogRate(
       rateAnalog, pinPosition, resistorUpper, resistorDowner);
-  TEST_ASSERT_INT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
+  TEST_ASSERT_FLOAT_WITHIN(resistorAlowwDiff, resistorExpected, resistorResult);
 }
 
 void setup() {
