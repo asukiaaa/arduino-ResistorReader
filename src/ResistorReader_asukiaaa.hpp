@@ -20,20 +20,13 @@ enum class PinPosition {
 double calcResistorFromAnalogRate(double rateAnalog, PinPosition pinPosition,
                                   float resistorFixedUpper,
                                   float resistorFixedDowner) {
-  double resistorPerRate;
-  double rateTarget;
   if (pinPosition == PinPosition::Downer) {
-    resistorPerRate = resistorFixedDowner / rateAnalog;
-    rateTarget =
-        1 - rateAnalog * (1 + resistorFixedUpper / resistorFixedDowner);
+    return (double)resistorFixedDowner * (1 - rateAnalog) / rateAnalog -
+           resistorFixedUpper;
   } else {
-    resistorPerRate = resistorFixedUpper / (1 - rateAnalog);
-    rateTarget = rateAnalog -
-                 (1 - rateAnalog) * resistorFixedDowner / resistorFixedUpper;
+    return (double)resistorFixedUpper * rateAnalog / (1 - rateAnalog) -
+           resistorFixedDowner;
   }
-  // Serial.println(rateTarget);
-  // Serial.println(resistorPerRate);
-  return rateTarget * resistorPerRate;
 }
 
 class Core {
