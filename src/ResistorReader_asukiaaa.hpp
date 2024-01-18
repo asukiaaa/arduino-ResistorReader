@@ -51,14 +51,13 @@ class Core {
  public:
   Core(int pinRead, PinPosition pinPosition, float resistorFixedUpper,
        float resistorFixedDowner, uint16_t adcMax = ANALOG_ASUKIAAA_ADC_MAX)
-      : pinRead(pinRead), adcMax(adcMax) {
-    parser = new Parser(pinPosition, resistorFixedUpper, resistorFixedDowner);
-  }
-  ~Core() { delete parser; }
+      : pinRead(pinRead),
+        adcMax(adcMax),
+        parser(pinPosition, resistorFixedUpper, resistorFixedDowner) {}
 
   void update() {
     currentAdc = analogRead(pinRead);
-    currentResistor = parser->parse((double)currentAdc / adcMax);
+    currentResistor = parser.parse((double)currentAdc / adcMax);
   }
 
   float getCurrentResistor() const { return currentResistor; }
@@ -67,7 +66,7 @@ class Core {
  private:
   const int pinRead;
   const uint16_t adcMax;
-  Parser* parser;
+  Parser parser;
   float currentResistor = 0;
   uint16_t currentAdc = 0;
 };
