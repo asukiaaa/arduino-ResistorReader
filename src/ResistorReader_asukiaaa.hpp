@@ -61,8 +61,8 @@ class Core {
     currentResistor = parser->parse((double)currentAdc / adcMax);
   }
 
-  float getCurrentResistor() { return currentResistor; }
-  uint16_t getCurrentAdc() { return currentAdc; }
+  float getCurrentResistor() const { return currentResistor; }
+  uint16_t getCurrentAdc() const { return currentAdc; }
 
  private:
   const int pinRead;
